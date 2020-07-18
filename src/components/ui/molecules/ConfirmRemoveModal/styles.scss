@@ -1,0 +1,41 @@
+.removeModal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  h1,
+  h2 {
+    margin: 0;
+  }
+
+  &-h1 {
+    font-weight: bold;
+    font-size: 35px;
+    color: #000000;
+    margin-bottom: 16px;
+  }
+
+  &-h2 {
+    font-weight: normal;
+    font-size: 15px;
+    text-align: center;
+    color: #000000;
+    margin-bottom: 16px;
+  }
+
+  &-title {
+    font-weight: bold;
+    font-size: 15px;
+    color: #000000;
+    margin-bottom: 3px;
+  }
+
+  &-director {
+    font-weight: bold;
+    font-size: 15px;
+    color: #000000;
+    margin-bottom: 3px;
+    margin-bottom: 19px;
+  }
+}
