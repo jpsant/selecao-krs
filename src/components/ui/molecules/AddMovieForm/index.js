@@ -7,11 +7,11 @@ import ConfirmButton from "../../atoms/ConfirmButton";
 export default function AddMovieForm({ show, close }) {
   return (
     <div
+      className="addMovieForm"
       style={{
         visibility: show ? "visible" : "hidden",
         opacity: show ? "1" : "0",
       }}
-      className="addMovieForm"
     >
       <div className="addMovieForm-closeButton">
         <CloseButton fnc={close} />
