@@ -4,9 +4,11 @@ import "./styles.scss";
 import AddButton from "../../atoms/AddButton";
 import Backdrop from "../../atoms/Backdrop";
 import MovieCard from "../../molecules/MovieCard";
-import AddMovieForm from '../../molecules/AddMovieForm';
+import ConfirmRemoveModal from "../../molecules/ConfirmRemoveModal";
+import AddMovieForm from "../../molecules/AddMovieForm";
+import EditMovieForm from "../../molecules/EditMovieForm";
 
-export default function CardsContainer({}) {
+export default function CardsContainer() {
   const [showModal, showModalHandler] = useState(false);
   const [modalType, modalTypeHandler] = useState("");
 
@@ -32,7 +34,12 @@ export default function CardsContainer({}) {
 
   return (
     <>
-      <AddMovieForm show={modalType === 'add'} close={closeModalHandler} />
+      <ConfirmRemoveModal
+        show={modalType === "delete"}
+        close={closeModalHandler}
+      />
+      <EditMovieForm show={modalType === "edit"} close={closeModalHandler} />
+      <AddMovieForm show={modalType === "add"} close={closeModalHandler} />
       <Backdrop show={showModal} toggle={closeModalHandler} />
       <div className="cardsContainer">
         <div className="cardsContainer__input">
