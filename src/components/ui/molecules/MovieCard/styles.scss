@@ -1,0 +1,24 @@
+.movieCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 324px;
+  height: 240px;
+  background: #c4c4c4;
+  border-radius: 5px;
+  margin-bottom: 17px;
+
+  &__editButton {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+  }
+
+  &__deleteButton {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+  }
+}
