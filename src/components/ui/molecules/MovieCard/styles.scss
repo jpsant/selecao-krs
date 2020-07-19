@@ -4,11 +4,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 324px;
-  height: 240px;
+  width: 316px;
+  height: 200px;
   background: #c4c4c4;
   border-radius: 5px;
   margin-bottom: 17px;
+  padding: 0 8px;
 
   &__editButton {
     position: absolute;
@@ -20,5 +21,88 @@
     position: absolute;
     top: 8px;
     left: 8px;
+  }
+
+  &__title {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    width: 210px;
+
+    h1 {
+      font-size: 20px;
+      margin: 0;
+      margin-bottom: 5px;
+    }
+
+    h3 {
+      margin: 0;
+      margin-bottom: 5px;
+      font-weight: 300;
+      font-size: 12px;
+    }
+  }
+
+  &__sinopsis {
+    display: flex;
+    width: 100%;
+    height: 20px;
+    margin-bottom: 5px;
+    margin-top: 50px;
+    
+    h2 {
+      font-size: 17px;
+
+      span {
+        font-weight: 300;
+      }
+    }
+  }
+
+  &__director {
+    height: 20px;
+    display: flex;
+    width: 100%;
+    margin-bottom: 5px;
+    
+    h2 {
+      font-size: 17px;
+
+      span {
+        font-weight: 300;
+      }
+    }
+  }
+
+  &__language {
+    height: 20px;
+    display: flex;
+    width: 100%;
+    margin-bottom: 5px;
+    
+    h2 {
+      font-size: 17px;
+
+      span {
+        font-weight: 300;
+      }
+    }
+  }
+
+  &__subtitle {
+    height: 20px;
+    display: flex;
+    width: 100%;
+    margin-bottom: 5px;
+    
+    h2 {
+      font-size: 17px;
+
+      span {
+        font-weight: 300;
+      }
+    }
   }
 }

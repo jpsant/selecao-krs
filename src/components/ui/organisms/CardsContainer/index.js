@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from 'axios';
 import "./styles.scss";
 
 import AddButton from "../../atoms/AddButton";
@@ -9,8 +10,17 @@ import AddMovieForm from "../../molecules/AddMovieForm";
 import EditMovieForm from "../../molecules/EditMovieForm";
 
 export default function CardsContainer() {
+  const [movieList, movieListHandler] = useState([]);
   const [showModal, showModalHandler] = useState(false);
   const [modalType, modalTypeHandler] = useState("");
+
+  useEffect(() => {
+    axios.get('http://localhost:3000/movies')
+      .then(response => {
+        movieListHandler(response.data);
+        console.log(response.data);
+      })
+  }, [])
 
   const deleteModalHandler = () => {
     showModalHandler(!showModal);
@@ -47,10 +57,14 @@ export default function CardsContainer() {
           <AddButton fnc={addModalHandler} />
         </div>
         <div className="cardsContainer__cards">
-          <MovieCard
+          {movieList.map(movie => (
+            <MovieCard
+            key={movie.id}
+            movie={movie}
             deleteModal={deleteModalHandler}
             editModal={editModalHandler}
           />
+          ))}
         </div>
       </div>
     </>
