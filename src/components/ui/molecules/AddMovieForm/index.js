@@ -82,7 +82,7 @@ export default function AddMovieForm({ show, close }) {
             <TextInputGroup
               required={true}
               fnc={(e) => handleInput(e, "launchDate")}
-              name="Data de lançamento"
+              name="Ano de lançamento"
             />
           </div>
           <div className="addMovieForm__formBody__form__language">

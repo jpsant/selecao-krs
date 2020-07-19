@@ -1,9 +1,10 @@
 import React from "react";
 import "./styles.scss";
 
-export default function TextInput({ name, fnc, width, required }) {
+export default function TextInput({ name, fnc, width, required, value }) {
   return (
     <input
+      defaultValue={value}
       required={required}
       style={{ width: width ? width : "" }}
       className="textInput"
