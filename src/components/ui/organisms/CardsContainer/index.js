@@ -20,7 +20,17 @@ export default function CardsContainer() {
 
   const [showModal, showModalHandler] = useState(false);
   const [modalType, modalTypeHandler] = useState("");
-  const [selectedItem, selectedItemHandler] = useState({});
+  const [selectedItem, selectedItemHandler] = useState({
+    title: "",
+    sinopsis: "",
+    gender: "",
+    launchDate: "",
+    language: "",
+    director: "",
+    imdb: "",
+    score: "",
+    subtitle: false,
+  });
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -35,6 +45,7 @@ export default function CardsContainer() {
 
   const editModalHandler = (movie) => {
     showModalHandler(!showModal);
+    selectedItemHandler(movie);
     modalTypeHandler("edit");
   };
 
@@ -51,6 +62,8 @@ export default function CardsContainer() {
 
   return (
     <>
+      <LoadingSpinner show={loading} />
+      <Backdrop show={showModal || loading} toggle={closeModalHandler} />
       <ModalMessage
         message="Operação realizada com sucesso!"
         show={success}
@@ -61,13 +74,13 @@ export default function CardsContainer() {
         show={error}
         fnc={closeModalHandler}
       />
-      <LoadingSpinner show={loading} />
       <ConfirmRemoveModal
         item={selectedItem}
         show={modalType === "delete" && !loading && (!success || error)}
         close={closeModalHandler}
       />
       <EditMovieForm
+        item={selectedItem}
         show={modalType === "edit" && !loading && (!success || error)}
         close={closeModalHandler}
       />
@@ -75,7 +88,6 @@ export default function CardsContainer() {
         show={modalType === "add" && !loading && (!success || error)}
         close={closeModalHandler}
       />
-      <Backdrop show={showModal || loading} toggle={closeModalHandler} />
       <div className="cardsContainer">
         <div className="cardsContainer__input">
           <h1>Lista de filmes</h1>
