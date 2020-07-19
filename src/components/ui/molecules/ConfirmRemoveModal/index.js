@@ -1,15 +1,18 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import * as actionCreators from '../../../../store/actions/actionCreators';
 import "./styles.scss";
 
 import Modal from "../Modal";
 import ConfirmButton from "../../atoms/ConfirmButton";
 
 export default function ConfirmRemoveModal({ item, show, close }) {
+  const movieList = useSelector((state) => state.movieList);
   const dispatch = useDispatch();
 
   const removeMovieHandler = (item) => {
-    console.log(item);
+    let newList = movieList.filter(movie => movie.id !== item.id);
+    dispatch(actionCreators.initRemovingMovie(newList, item.id));
   };
 
   return (
