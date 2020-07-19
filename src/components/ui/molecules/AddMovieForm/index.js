@@ -1,18 +1,22 @@
 import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import * as actionCreators from '../../../../store/actions/actionCreators';
 import "./styles.scss";
 
 import CloseButton from "../../atoms/CloseButton";
-// import ConfirmButton from "../../atoms/ConfirmButton";
 import TextInputGroup from "../../molecules/TextInputGroup";
 import RadioInputGroup from "../../molecules/RadioInputGroup";
 
 export default function AddMovieForm({ show, close }) {
+  const movieList = useSelector((state) => state.movieList);
+  const dispatch = useDispatch();
+
   const [movie, movieHandler] = useState({
     title: "",
     sinopsis: "",
     gender: "",
     launchDate: "",
-    languaga: "",
+    language: "",
     director: "",
     imdb: "",
     score: "",
@@ -20,14 +24,15 @@ export default function AddMovieForm({ show, close }) {
   });
 
   const handleInput = (input, field) => {
-    let newMovie = movie;
-    newMovie[field] = input;
-    movieHandler({ ...movie, newMovie });
+    movieHandler({ ...movie, [field]: input });
   };
 
   const movieFormHandler = (e) => {
     e.preventDefault();
-    console.log(movie);
+    let newMovie = movie;
+    newMovie.id = movieList.length;
+    let newMovieList = [...movieList, newMovie]
+    dispatch(actionCreators.initAddingMovie(newMovieList, newMovie));
   };
 
   return (
@@ -106,7 +111,9 @@ export default function AddMovieForm({ show, close }) {
             />
           </div>
           <div className="addMovieForm__formBody__form__subtitle">
-            <h2 className="addMovieForm__formBody__form__subtitle-h2">É legendado? <span>*</span></h2>
+            <h2 className="addMovieForm__formBody__form__subtitle-h2">
+              É legendado? <span>*</span>
+            </h2>
             <RadioInputGroup
               required={true}
               inputName="subtitle"
