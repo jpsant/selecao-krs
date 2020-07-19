@@ -2,13 +2,10 @@ import React from "react";
 import "./styles.scss";
 
 import Modal from "../Modal";
-import ConfirmButton from "../../atoms/ConfirmButton";
 
 export default function ConfirmRemoveModal({
   title,
   director,
-  fnc,
-  text,
   show,
   close,
 }) {
@@ -27,7 +24,6 @@ export default function ConfirmRemoveModal({
         </h2>
         <h2 className="removeModal-title">{title}</h2>
         <h2 className="removeModal-director">{director}</h2>
-        <ConfirmButton fnc={fnc} text={text} />
       </div>
     </Modal>
   );

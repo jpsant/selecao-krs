@@ -2,7 +2,6 @@ import React from "react";
 import "./styles.scss";
 
 import CloseButton from "../../atoms/CloseButton";
-import ConfirmButton from "../../atoms/ConfirmButton";
 
 export default function EditMovieForm({ show, close }) {
   return (
@@ -22,7 +21,6 @@ export default function EditMovieForm({ show, close }) {
             Editar filme
           </h1>
         </div>
-        <ConfirmButton text="Cadastrar Filme" />
       </div>
     </div>
   );
