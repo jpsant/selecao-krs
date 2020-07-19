@@ -2,7 +2,7 @@ import React from 'react';
 import './styles.scss'
 
 import Label from '../../atoms/Label';
-import Input from '../../atoms/Input';
+import Input from '../../atoms/TextInput';
 
 export default function InputGroup({name, fnc, width, required}) {
   return (
