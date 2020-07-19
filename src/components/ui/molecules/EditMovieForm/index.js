@@ -10,31 +10,50 @@ import RadioInputGroup from "../../molecules/RadioInputGroup";
 export default function EditMovieForm({ show, close, item }) {
   useEffect(() => {
     movieHandler(item);
+    titleHandler(item.title);
   }, [item]);
 
   const movieList = useSelector((state) => state.movieList);
   const dispatch = useDispatch();
 
-  const [movie, movieHandler] = useState({
-    id: item.id,
-    title: "",
-    sinopsis: "",
-    gender: "",
-    launchDate: "",
-    language: "",
-    director: "",
-    imdb: "",
-    score: "",
-    subtitle: "",
-  });
+  const [id, idHandler] = useState('');
+  const [title, titleHandler] = useState('');
+  const [sinopsis, sinopsisHandler] = useState('');
+  const [gender, genderHandler] = useState('');
+  const [launchDate, launchDateHandler] = useState('');
+  const [language, languageHandler] = useState('');
+  const [director, directorHandler] = useState('');
+  const [imdb, imdbHandler] = useState('');
+  const [score, scoreHandler] = useState('');
+  const [subtitle, subtitleHandler] = useState('');
 
-  const handleInput = (input, field) => {
-    movieHandler({ ...movie, [field]: input });
-  };
+  const movieHandler = (item) => {
+    idHandler(item.id);
+    titleHandler(item.title);
+    sinopsisHandler(item.sinopsis);
+    genderHandler(item.gender);
+    launchDateHandler(item.launchDate);
+    languageHandler(item.language);
+    directorHandler(item.director);
+    imdbHandler(item.imdb);
+    scoreHandler(item.score);
+    subtitleHandler(item.subtitle);
+  }
 
   const movieFormHandler = (e) => {
     e.preventDefault();
-    let newMovie = movie;
+    let newMovie = {
+      id,
+      title,
+      sinopsis,
+      gender,
+      launchDate,
+      language,
+      director,
+      imdb,
+      score,
+      subtitle
+    };
     let newMovieList = movieList.filter((movie) => movie.id !== newMovie.id);
     newMovieList.push(newMovie);
     dispatch(actionCreators.initEditingMovie(newMovieList, newMovie));
@@ -61,62 +80,62 @@ export default function EditMovieForm({ show, close, item }) {
         >
           <div className="editMovieForm__formBody__form__title">
             <TextInputGroup
-              value={movie.title}
+              value={title}
               required={true}
-              fnc={(e) => handleInput(e, "title")}
+              fnc={(e) => titleHandler(e)}
               name="Titulo"
             />
           </div>
           <div className="editMovieForm__formBody__form__sinopsis">
             <TextInputGroup
-              value={item.sinopsis}
+              value={sinopsis}
               required={true}
-              fnc={(e) => handleInput(e, "sinopsis")}
+              fnc={(e) => sinopsisHandler(e)}
               name="Sinopse"
             />
           </div>
           <div className="editMovieForm__formBody__form__gender">
             <TextInputGroup
-              value={item.gender}
+              value={gender}
               required={true}
-              fnc={(e) => handleInput(e, "gender")}
+              fnc={(e) => genderHandler(e)}
               name="Genero"
             />
           </div>
           <div className="editMovieForm__formBody__form__launch">
             <TextInputGroup
-              value={item.launchDate}
+              value={launchDate}
               required={true}
-              fnc={(e) => handleInput(e, "launchDate")}
+              fnc={(e) => launchDateHandler(e)}
               name="Ano lançamento"
             />
           </div>
           <div className="editMovieForm__formBody__form__language">
             <TextInputGroup
-              value={item.language}
+              value={language}
               required={true}
-              fnc={(e) => handleInput(e, "language")}
+              fnc={(e) => languageHandler(e)}
               width="120px"
               name="Idioma"
             />
             <TextInputGroup
-              value={item.director}
-              fnc={(e) => handleInput(e, "director")}
+              value={director}
+              fnc={(e) => directorHandler(e)}
               width="120px"
               name="Diretor"
             />
           </div>
           <div className="editMovieForm__formBody__form__imdb">
             <TextInputGroup
-              value={item.imdb}
-              fnc={(e) => handleInput(e, "imdb")}
+              value={imdb}
+              fnc={(e) => imdbHandler(e)}
               name="IMDB Link"
             />
           </div>
           <div className="editMovieForm__formBody__form__score">
             <TextInputGroup
-              value={item.score}
-              fnc={(e) => handleInput(e, "score")}
+              value={score}
+              fnc={(e) => scoreHandler(e)}
               name="Avaliação"
             />
           </div>
@@ -129,13 +148,13 @@ export default function EditMovieForm({ show, close, item }) {
               inputName="subtitle"
               name="Sim"
               value={true}
-              fnc={(value) => handleInput(value, "subtitle")}
+              fnc={(value) => subtitleHandler(value)}
             />
             <RadioInputGroup
               inputName="subtitle"
               name="Não"
               value={false}
-              fnc={(value) => handleInput(value, "subtitle")}
+              fnc={(value) => subtitleHandler(value)}
             />
           </div>
           <button
