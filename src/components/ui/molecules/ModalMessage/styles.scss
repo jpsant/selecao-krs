@@ -1,0 +1,18 @@
+.modalMessage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &-h1 {
+    font-weight: bold;
+    font-size: 32px;
+    text-align: center;
+    color: #000000;
+    margin-bottom: 41px;
+  }
+
+  &__button {
+    display: flex;
+  }
+}
