@@ -1,14 +1,17 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import "./styles.scss";
 
 import Modal from "../Modal";
+import ConfirmButton from "../../atoms/ConfirmButton";
 
-export default function ConfirmRemoveModal({
-  title,
-  director,
-  show,
-  close,
-}) {
+export default function ConfirmRemoveModal({ item, show, close }) {
+  const dispatch = useDispatch();
+
+  const removeMovieHandler = (item) => {
+    console.log(item);
+  };
+
   return (
     <Modal show={show} close={close}>
       <div
@@ -22,8 +25,17 @@ export default function ConfirmRemoveModal({
         <h2 className="removeModal-h2">
           Deseja realmente remover o filme selecionado do catálogo?
         </h2>
-        <h2 className="removeModal-title">{title}</h2>
-        <h2 className="removeModal-director">{director}</h2>
+        <h2 className="removeModal-title">
+          Título: <span>{item.title}</span>
+        </h2>
+        <h2 className="removeModal-director">
+          Diretor: <span>{item.director}</span>
+        </h2>
+        <div className="removeModal__button">
+          <ConfirmButton fnc={() => removeMovieHandler(item)}>
+            Remover
+          </ConfirmButton>
+        </div>
       </div>
     </Modal>
   );
