@@ -20,24 +20,12 @@ export const retrieveMovieListFail = () => {
   };
 };
 
-export const initRetrievingMovieList = () => {
-  return (dispatch) => {
-    dispatch(retrieveMovieList());
-    axios
-      .get("http://localhost:3000/movies")
-      .then((response) => {
-        dispatch(retrieveMovieListSuccess(response.data));
-      })
-      .catch(() => dispatch(retrieveMovieListFail()));
-  };
-};
-
 export const updateMovieList = (list) => {
   return {
     type: actionTypes.UPDATING_MOVIE_LIST,
-    movieList: list
-  }
-}
+    movieList: list,
+  };
+};
 
 export const addMovie = () => {
   return {
@@ -56,23 +44,6 @@ export const addMovieFail = () => {
     type: actionTypes.ADDING_MOVIE_FAIL,
   };
 };
-
-export const initAddingMovie = (list, item) => {
-  return (dispatch) => {
-    dispatch(addMovie());
-    axios
-      .post("http://localhost:3000/movies/", item)
-      .then(() => {
-        dispatch(addMovieSuccess());
-        dispatch(updateMovieList(list));
-      })
-      .catch(() => dispatch(addMovieFail()));
-  };
-};
-
-export const updatingMovieList = () => {
-
-}
 
 export const editMovie = () => {
   return {
@@ -112,6 +83,43 @@ export const removeMovieFail = () => {
 
 export const closeModalMessage = () => {
   return {
-    type: actionTypes.CLOSE_MESSAGE_MODAL
-  }
-}
+    type: actionTypes.CLOSE_MESSAGE_MODAL,
+  };
+};
+
+export const initRetrievingMovieList = () => {
+  return (dispatch) => {
+    dispatch(retrieveMovieList());
+    axios
+      .get("http://localhost:3000/movies")
+      .then((response) => {
+        dispatch(retrieveMovieListSuccess(response.data));
+      })
+      .catch(() => dispatch(retrieveMovieListFail()));
+  };
+};
+
+export const initAddingMovie = (list, item) => {
+  return (dispatch) => {
+    dispatch(addMovie());
+    axios
+      .post("http://localhost:3000/movies/", item)
+      .then(() => {
+        dispatch(addMovieSuccess());
+        dispatch(updateMovieList(list));
+      })
+      .catch(() => dispatch(addMovieFail()));
+  };
+};
+
+export const initRemovingMovie = (list, id) => {
+  return (dispatch) => {
+    dispatch(removeMovie());
+    axios.delete(`http://localhost:3000/movies/${id}`)
+      .then(() => {
+        dispatch(removeMovieSuccess());
+        dispatch(updateMovieList(list));
+      })
+      .catch(() => dispatch(removeMovieFail()));
+  };
+};
