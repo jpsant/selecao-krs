@@ -1,15 +1,17 @@
 .modal {
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate( -50%, -50%);
   position: fixed;
   z-index: 999;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 330px;
-  height: 232px;
+  width: 341px;
+  height: 338px;
   border-radius: 5px;
   background-color: #c4c4c4;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: subpixel-antialiased;
 }

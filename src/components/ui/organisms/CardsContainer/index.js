@@ -13,19 +13,22 @@ import EditMovieForm from "../../molecules/EditMovieForm";
 export default function CardsContainer() {
   const dispatch = useDispatch();
   const movieList = useSelector(state => state.movieList);
-  const [showModal, showModalHandler] = useState(false);
-  const [modalType, modalTypeHandler] = useState("");
+
+  const [showModal, showModalHandler] = useState(true);
+  const [modalType, modalTypeHandler] = useState("delete");
+  const [selectedItem, selectedItemHandler] = useState({});
 
   useEffect(() => {
     dispatch(actionCreators.initRetrievingMovieList());
   }, []);
 
-  const deleteModalHandler = () => {
+  const deleteModalHandler = (movie) => {
     showModalHandler(!showModal);
     modalTypeHandler("delete");
+    selectedItemHandler(movie);
   };
 
-  const editModalHandler = () => {
+  const editModalHandler = (movie) => {
     showModalHandler(!showModal);
     modalTypeHandler("edit");
   };
@@ -43,6 +46,7 @@ export default function CardsContainer() {
   return (
     <>
       <ConfirmRemoveModal
+        item={selectedItem}
         show={modalType === "delete"}
         close={closeModalHandler}
       />
@@ -59,8 +63,8 @@ export default function CardsContainer() {
             <MovieCard
               key={movie.id}
               movie={movie}
-              deleteModal={deleteModalHandler}
-              editModal={editModalHandler}
+              deleteModal={() => deleteModalHandler(movie)}
+              editModal={() => editModalHandler(movie)}
             />
           ))}
         </div>
