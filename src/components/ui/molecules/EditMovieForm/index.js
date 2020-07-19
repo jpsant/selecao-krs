@@ -1,17 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import * as actionCreators from '../../../../store/actions/actionCreators';
+import * as actionCreators from "../../../../store/actions/actionCreators";
 import "./styles.scss";
 
 import CloseButton from "../../atoms/CloseButton";
 import TextInputGroup from "../../molecules/TextInputGroup";
 import RadioInputGroup from "../../molecules/RadioInputGroup";
 
-export default function EditMovieForm({ show, close }) {
+export default function EditMovieForm({ show, close, item }) {
+  useEffect(() => {
+    movieHandler(item);
+  }, [item]);
+
   const movieList = useSelector((state) => state.movieList);
   const dispatch = useDispatch();
 
   const [movie, movieHandler] = useState({
+    id: item.id,
     title: "",
     sinopsis: "",
     gender: "",
@@ -20,7 +25,7 @@ export default function EditMovieForm({ show, close }) {
     director: "",
     imdb: "",
     score: "",
-    subtitle: false,
+    subtitle: "",
   });
 
   const handleInput = (input, field) => {
@@ -29,10 +34,10 @@ export default function EditMovieForm({ show, close }) {
 
   const movieFormHandler = (e) => {
     e.preventDefault();
-    // let newMovie = movie;
-    // newMovie.id = movieList.length;
-    // let newMovieList = [...movieList, newMovie]
-    // dispatch(actionCreators.initAddingMovie(newMovieList, newMovie));
+    let newMovie = movie;
+    let newMovieList = movieList.filter((movie) => movie.id !== newMovie.id);
+    newMovieList.push(newMovie);
+    dispatch(actionCreators.initEditingMovie(newMovieList, newMovie));
   };
 
   return (
@@ -56,6 +61,7 @@ export default function EditMovieForm({ show, close }) {
         >
           <div className="editMovieForm__formBody__form__title">
             <TextInputGroup
+              value={movie.title}
               required={true}
               fnc={(e) => handleInput(e, "title")}
               name="Titulo"
@@ -63,6 +69,7 @@ export default function EditMovieForm({ show, close }) {
           </div>
           <div className="editMovieForm__formBody__form__sinopsis">
             <TextInputGroup
+              value={item.sinopsis}
               required={true}
               fnc={(e) => handleInput(e, "sinopsis")}
               name="Sinopse"
@@ -70,6 +77,7 @@ export default function EditMovieForm({ show, close }) {
           </div>
           <div className="editMovieForm__formBody__form__gender">
             <TextInputGroup
+              value={item.gender}
               required={true}
               fnc={(e) => handleInput(e, "gender")}
               name="Genero"
@@ -77,19 +85,22 @@ export default function EditMovieForm({ show, close }) {
           </div>
           <div className="editMovieForm__formBody__form__launch">
             <TextInputGroup
+              value={item.launchDate}
               required={true}
               fnc={(e) => handleInput(e, "launchDate")}
-              name="Data de lançamento"
+              name="Ano lançamento"
             />
           </div>
           <div className="editMovieForm__formBody__form__language">
             <TextInputGroup
+              value={item.language}
               required={true}
               fnc={(e) => handleInput(e, "language")}
               width="120px"
               name="Idioma"
             />
             <TextInputGroup
+              value={item.director}
               fnc={(e) => handleInput(e, "director")}
               width="120px"
               name="Diretor"
@@ -97,12 +108,14 @@ export default function EditMovieForm({ show, close }) {
           </div>
           <div className="editMovieForm__formBody__form__imdb">
             <TextInputGroup
+              value={item.imdb}
               fnc={(e) => handleInput(e, "imdb")}
               name="IMDB Link"
             />
           </div>
           <div className="editMovieForm__formBody__form__score">
             <TextInputGroup
+              value={item.score}
               fnc={(e) => handleInput(e, "score")}
               name="Avaliação"
             />
@@ -125,7 +138,10 @@ export default function EditMovieForm({ show, close }) {
               fnc={(value) => handleInput(value, "subtitle")}
             />
           </div>
-          <button className="editMovieForm__formBody__form-button" type="submit">
+          <button
+            className="editMovieForm__formBody__form-button"
+            type="submit"
+          >
             Editar filme
           </button>
         </form>

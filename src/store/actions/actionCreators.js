@@ -87,6 +87,19 @@ export const closeModalMessage = () => {
   };
 };
 
+export const initEditingMovie = (list, item) => {
+  return (dispatch) => {
+    dispatch(editMovie());
+    axios
+      .put(`http://localhost:3000/movies/${item.id}`, item)
+      .then(() => {
+        dispatch(editMovieSuccess());
+        dispatch(updateMovieList(list));
+      })
+      .catch(() => dispatch(editMovieFail()));
+  };
+};
+
 export const initRetrievingMovieList = () => {
   return (dispatch) => {
     dispatch(retrieveMovieList());
@@ -115,7 +128,8 @@ export const initAddingMovie = (list, item) => {
 export const initRemovingMovie = (list, id) => {
   return (dispatch) => {
     dispatch(removeMovie());
-    axios.delete(`http://localhost:3000/movies/${id}`)
+    axios
+      .delete(`http://localhost:3000/movies/${id}`)
       .then(() => {
         dispatch(removeMovieSuccess());
         dispatch(updateMovieList(list));
