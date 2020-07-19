@@ -64,7 +64,7 @@ export default function CardsContainer() {
       <LoadingSpinner show={loading} />
       <ConfirmRemoveModal
         item={selectedItem}
-        show={modalType === "delete"}
+        show={modalType === "delete" && !loading && (!success || error)}
         close={closeModalHandler}
       />
       <EditMovieForm
