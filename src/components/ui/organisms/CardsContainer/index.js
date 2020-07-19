@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import * as actionCreators from '../../../../store/actions/actionCreators';
+import * as actionCreators from "../../../../store/actions/actionCreators";
 import "./styles.scss";
 
 import AddButton from "../../atoms/AddButton";
@@ -9,14 +9,19 @@ import MovieCard from "../../molecules/MovieCard";
 import ConfirmRemoveModal from "../../molecules/ConfirmRemoveModal";
 import AddMovieForm from "../../molecules/AddMovieForm";
 import EditMovieForm from "../../molecules/EditMovieForm";
+import LoadingSpinner from "../../atoms/LoadingSpinner";
+import ModalMessage from "../../molecules/ModalMessage";
 
 export default function CardsContainer() {
-  const dispatch = useDispatch();
-  const movieList = useSelector(state => state.movieList);
+  const movieList = useSelector((state) => state.movieList);
+  const loading = useSelector((state) => state.loading);
+  const success = useSelector((state) => state.success);
+  const error = useSelector((state) => state.error);
 
-  const [showModal, showModalHandler] = useState(true);
-  const [modalType, modalTypeHandler] = useState("delete");
+  const [showModal, showModalHandler] = useState(false);
+  const [modalType, modalTypeHandler] = useState("");
   const [selectedItem, selectedItemHandler] = useState({});
+  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(actionCreators.initRetrievingMovieList());
@@ -41,18 +46,36 @@ export default function CardsContainer() {
   const closeModalHandler = () => {
     showModalHandler(false);
     modalTypeHandler("");
+    dispatch(actionCreators.closeModalMessage());
   };
 
   return (
     <>
+      <ModalMessage
+        message="Operação realizada com sucesso!"
+        show={success}
+        fnc={closeModalHandler}
+      />
+      <ModalMessage
+        message="Ocorreu um erro em sua requisição"
+        show={error}
+        fnc={closeModalHandler}
+      />
+      <LoadingSpinner show={loading} />
       <ConfirmRemoveModal
         item={selectedItem}
         show={modalType === "delete"}
         close={closeModalHandler}
       />
-      <EditMovieForm show={modalType === "edit"} close={closeModalHandler} />
-      <AddMovieForm show={modalType === "add"} close={closeModalHandler} />
-      <Backdrop show={showModal} toggle={closeModalHandler} />
+      <EditMovieForm
+        show={modalType === "edit" && !loading && (!success || error)}
+        close={closeModalHandler}
+      />
+      <AddMovieForm
+        show={modalType === "add" && !loading && (!success || error)}
+        close={closeModalHandler}
+      />
+      <Backdrop show={showModal || loading} toggle={closeModalHandler} />
       <div className="cardsContainer">
         <div className="cardsContainer__input">
           <h1>Lista de filmes</h1>
