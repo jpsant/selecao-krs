@@ -22,7 +22,7 @@ export const retrieveMovieListFail = () => {
 
 export const initRetrievingMovieList = () => {
   return (dispatch) => {
-    dispatch(retrieveMovieList);
+    dispatch(retrieveMovieList());
     axios
       .get("http://localhost:3000/movies")
       .then((response) => {
@@ -109,3 +109,9 @@ export const removeMovieFail = () => {
     type: actionTypes.REMOVING_MOVIE_FAIL,
   };
 };
+
+export const closeModalMessage = () => {
+  return {
+    type: actionTypes.CLOSE_MESSAGE_MODAL
+  }
+}

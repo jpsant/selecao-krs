@@ -50,6 +50,9 @@ const reducer = (state = initialState, action) => {
     case actionTypes.REMOVING_MOVIE_FAIL:
       return updateObject(state, {error: true, loading: false, success: false});
 
+    case actionTypes.CLOSE_MESSAGE_MODAL:
+      return updateObject(state, {error: false, loading: false, success: false})
+
     default:
       return state;
   }
