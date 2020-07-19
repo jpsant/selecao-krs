@@ -140,4 +140,20 @@
       }
     }
   }
+
+  &__imdb {
+    display: flex;
+    width: 100%;
+    margin-bottom: 5px;
+
+    h2 {
+      font-size: 17px;
+      margin: 0;
+      margin-bottom: 10px;
+
+      span {
+        font-weight: 300;
+      }
+    }
+  }
 }

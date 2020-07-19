@@ -3,6 +3,7 @@ import "./styles.scss";
 
 import EditButton from "../../atoms/EditButton";
 import DeleteButton from "../../atoms/DeleteButton";
+import Link from '../../atoms/Link';
 
 export default function MovieCard({ editModal, deleteModal, movie }) {
   return (
@@ -23,7 +24,7 @@ export default function MovieCard({ editModal, deleteModal, movie }) {
         <h2>Gênero: <span>{movie.gender}</span></h2>
       </div>
       <div className="movieCard__launchDate">
-        <h2>Data de lançamento: <span>{movie.launchDate}</span></h2>
+        <h2>Ano de lançamento: <span>{movie.launchDate}</span></h2>
       </div>
       <div className="movieCard__director">
         <h2>Diretor: <span>{movie.director}</span></h2>
@@ -33,6 +34,9 @@ export default function MovieCard({ editModal, deleteModal, movie }) {
       </div>
       <div className="movieCard__subtitle">
         <h2>Legendado: <span>{movie.subtitle ? "Sim" : "Não"}</span></h2>
+      </div>
+      <div className="movieCard__imdb">
+        <h2>IMDB: <span>{movie.imdb.length > 0 ? <Link link={movie.imdb} name="Link" /> : "Link não disponível"}</span></h2>
       </div>
     </div>
   );
