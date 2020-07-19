@@ -45,8 +45,8 @@ export default function CardsContainer() {
 
   const editModalHandler = (movie) => {
     showModalHandler(!showModal);
-    selectedItemHandler(movie);
     modalTypeHandler("edit");
+    selectedItemHandler(movie);
   };
 
   const addModalHandler = () => {

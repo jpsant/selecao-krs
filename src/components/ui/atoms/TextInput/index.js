@@ -4,7 +4,7 @@ import "./styles.scss";
 export default function TextInput({ name, fnc, width, required, value }) {
   return (
     <input
-      defaultValue={value}
+      value={value}
       required={required}
       style={{ width: width ? width : "" }}
       className="textInput"

@@ -6,7 +6,7 @@ import ConfirmButton from "../../atoms/ConfirmButton";
 
 export default function MessageModal({ fnc, show, message }) {
   return (
-    <Modal show={show}>
+    <Modal close={fnc} show={show}>
       <div className="modalMessage">
         <h1 className="modalMessage-h1">{message}</h1>
         <div className="modalMessage__button">
