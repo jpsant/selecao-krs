@@ -1,3 +1,5 @@
+@import '../../../../mixins/mixins.scss';
+
 .movieCard {
   position: relative;
   display: flex;
@@ -9,6 +11,15 @@
   border-radius: 5px;
   margin-bottom: 17px;
   padding: 0 8px;
+
+  @include respond-to(mobile-medium) {
+    width: 280px;
+  }
+
+  @include respond-to(medium) {
+    margin: 16px 18px;
+    min-height: 335px;
+  }
 
   &__editButton {
     position: absolute;

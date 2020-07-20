@@ -1,3 +1,5 @@
+@import '../../../../mixins/mixins.scss';
+
 .addMovieForm {
   left: 50%;
   top: 50%;
@@ -13,6 +15,10 @@
   border-radius: 5px;
   transition: all 0.3s;
   z-index: 9999;
+
+  @include respond-to(mobile-medium) {
+    width: 280px;
+  }
 
   &-closeButton {
     position: absolute;
@@ -40,6 +46,10 @@
         font-size: 28px;
         margin: 0;
         margin-bottom: 4px;
+
+        @include respond-to(mobile-medium) {
+          font-size: 24px;
+        }
       }
 
       &-h2 {
@@ -47,6 +57,10 @@
         font-size: 13px;
         color: #000000;
         margin: 0;
+
+        @include respond-to(mobile-medium) {
+          font-size: 11px;
+        }
       }
     }
 
@@ -79,10 +93,18 @@
         align-items: center;
         justify-content: center;
         margin-bottom: 6px;
+
+        @include respond-to(mobile-medium) {
+          flex-direction: column;
+        }
       }
 
       &__language *:first-child {
         margin-right: 6px;
+
+        @include respond-to(mobile-medium) {
+          margin-right: 0;
+        }
       }
 
       &__imdb {
