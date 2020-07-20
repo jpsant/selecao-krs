@@ -13,20 +13,23 @@ Este projeto foi criado com o create-react-app [Create React App](https://github
 
 ## Como iniciar a aplicação localmente:
 
-*Clonar o repositório para sua máquina local:
+* Clonar o repositório para sua máquina local:
   `git clone https://github.com/jpsant/selecao-krs.git`.
   
-*Instalar as dependências necessárias para rodar a aplicação:
+* Instalar as dependências necessárias para rodar a aplicação:
   `npm install`
   
-*Iniciar o Banco de dados local: **CERTIFICAR QUE ESTÁ RODANDO NA PORTA 3000**
+* Iniciar o Banco de dados local: **CERTIFICAR QUE ESTÁ RODANDO NA PORTA 3000**
   ```
   npm install -g json-server
   json-server --watch db.json
   ```
   
-*Iniciar a aplicação no servidor local:
+* Iniciar a aplicação no servidor local:
   `npm start`
+  
+## Como rodar os testes da aplicação:
+`npm test`
   
 ## MOCKUP inicial da aplicação:
 
