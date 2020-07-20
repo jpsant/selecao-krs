@@ -1,3 +1,5 @@
+@import '../../../../mixins/mixins.scss';
+
 .modal {
   left: 50%;
   top: 50%;
@@ -15,4 +17,17 @@
   backface-visibility: hidden;
   -webkit-font-smoothing: subpixel-antialiased;
   transition: all .3s;
+
+  @include respond-to(mobile-medium) {
+    width: 280px;
+  }
+
+  &__closeButton {
+    position: absolute;
+
+    @include respond-to(mobile-medium) {
+      top: 5px;
+      right: 5px;
+    }
+  }
 }

@@ -12,7 +12,9 @@ export default function Modal({ children, close, show }) {
       }}
       className="modal"
     >
-      <CloseButton fnc={close} />
+      <div className="modal__closeButton">
+        <CloseButton fnc={close} />
+      </div>
       {children}
     </div>
   );
