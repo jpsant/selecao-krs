@@ -5,6 +5,7 @@ import "./styles.scss";
 
 import CloseButton from "../../atoms/CloseButton";
 import TextInputGroup from "../../molecules/TextInputGroup";
+import NumberInputGroup from "../../molecules/NumberInputGroup";
 import RadioInputGroup from "../../molecules/RadioInputGroup";
 
 export default function EditMovieForm({ show, close, item }) {
@@ -102,9 +103,8 @@ export default function EditMovieForm({ show, close, item }) {
             />
           </div>
           <div className="editMovieForm__formBody__form__launch">
-            <TextInputGroup
+            <NumberInputGroup
               value={launchDate}
-              required={true}
               fnc={(e) => launchDateHandler(e)}
               name="Ano lançamento"
             />
