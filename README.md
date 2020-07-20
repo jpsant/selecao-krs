@@ -30,7 +30,7 @@ Este projeto foi criado com o create-react-app [Create React App](https://github
   
 ## MOCKUP inicial da aplicação:
 
-[Imgur](https://i.imgur.com/0N3DvsG.png)
+![IMAGE](https://i.imgur.com/0N3DvsG.png)
 
 ## APLICAÇÃO EM FUNCIONAMENTO:
 
