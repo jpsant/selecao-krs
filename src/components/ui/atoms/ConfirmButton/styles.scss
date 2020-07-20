@@ -3,11 +3,17 @@
   align-items: center;
   justify-content: center;
   border: none;
-  background: #9f9f9f;
+  background: #1E6262;
   border-radius: 5px;
   width: 195px;
   height: 42px;
   font-size: 18px;
   color: white;
   cursor: pointer;
+  filter: brightness(85%);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.confirmButton:hover {
+  filter: brightness(100%);
 }

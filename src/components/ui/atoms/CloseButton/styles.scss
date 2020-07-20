@@ -1,7 +1,7 @@
 @import '../../../../mixins/mixins.scss';
 
 .closeButton {
-  background-color: #9F9F9F;
+  background-color: #1E6262;
   position: absolute;
   display: flex;
   align-items: center;
@@ -13,11 +13,22 @@
   right: 10px;
   border: none;
   cursor: pointer;
+  filter: brightness(85%);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+
+  @include respond-to(medium) {
+    width: 35px;
+    height: 35px;
+  }
 
   @include respond-to(mobile-medium) {
     top: 0;
     right: 0;
   }
+}
+
+.closeButton:hover {
+  filter: brightness(100%);
 }
 
 .closeButton:focus {
