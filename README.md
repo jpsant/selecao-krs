@@ -2,14 +2,14 @@ Este projeto foi criado com o create-react-app [Create React App](https://github
 
 ## Bilitotecas utilizadas:
 
-**ReactJS (Hooks):** Framework utlizado na criação e manutenção do código.
-**Redux:** Para compartilhamento de State entre a aaplicação.
-**Axios:** Para realizar as Requisições HTTP.
-**Node-Sass:** Para compilar código SCSS.
-**Jest/Enzyme:** Para a realização dos testes unitários.
-**JSON-Server:** Para a criação de um banco de dados local.
-**Uniquid:** Para a geração de ids unicos.
-**BEM:** Para a padronização e organização do código SCSS
+* **ReactJS (Hooks):** Framework utlizado na criação e manutenção do código.
+* **Redux:** Para compartilhamento de State entre a aaplicação.
+* **Axios:** Para realizar as Requisições HTTP.
+* **Node-Sass:** Para compilar código SCSS.
+* **Jest/Enzyme:** Para a realização dos testes unitários.
+* **JSON-Server:** Para a criação de um banco de dados local.
+* **Uniquid:** Para a geração de ids unicos.
+* **BEM:** Para a padronização e organização do código SCSS
 
 ## Como iniciar a aplicação localmente:
 
