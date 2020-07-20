@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import * as actionCreators from '../../../../store/actions/actionCreators';
+import * as actionCreators from "../../../../store/actions/actionCreators";
+import uniqid from "uniqid";
 import "./styles.scss";
 
 import CloseButton from "../../atoms/CloseButton";
@@ -11,29 +12,51 @@ export default function AddMovieForm({ show, close }) {
   const movieList = useSelector((state) => state.movieList);
   const dispatch = useDispatch();
 
-  const [movie, movieHandler] = useState({
-    title: "",
-    sinopsis: "",
-    gender: "",
-    launchDate: "",
-    language: "",
-    director: "",
-    imdb: "",
-    score: "",
-    subtitle: false,
-  });
+  const [id, idHandler] = useState(uniqid());
+  const [title, titleHandler] = useState('');
+  const [sinopsis, sinopsisHandler] = useState('');
+  const [gender, genderHandler] = useState('');
+  const [launchDate, launchDateHandler] = useState('');
+  const [language, languageHandler] = useState('');
+  const [director, directorHandler] = useState('');
+  const [imdb, imdbHandler] = useState('');
+  const [score, scoreHandler] = useState('');
+  const [subtitle, subtitleHandler] = useState(false);
 
-  const handleInput = (input, field) => {
-    movieHandler({ ...movie, [field]: input });
-  };
+  useEffect(() => {
+    idHandler(uniqid());
+    titleHandler('');
+    sinopsisHandler('');
+    genderHandler('');
+    launchDateHandler('');
+    languageHandler('');
+    directorHandler('');
+    imdbHandler('');
+    scoreHandler('');
+    subtitleHandler(false);
+  }, [show])
 
   const movieFormHandler = (e) => {
     e.preventDefault();
-    let newMovie = movie;
-    newMovie.id = movieList.length;
-    let newMovieList = [...movieList, newMovie]
+    let newMovie = returnMovie();
+    let newMovieList = [...movieList, newMovie];
     dispatch(actionCreators.initAddingMovie(newMovieList, newMovie));
   };
+
+  const returnMovie = () => {
+    return {
+      id,
+      title,
+      sinopsis,
+      gender,
+      launchDate,
+      language,
+      director,
+      imdb,
+      score,
+      subtitle
+    }
+  }
 
   return (
     <div
@@ -59,52 +82,60 @@ export default function AddMovieForm({ show, close }) {
         >
           <div className="addMovieForm__formBody__form__title">
             <TextInputGroup
+              value={title}
               required={true}
-              fnc={(e) => handleInput(e, "title")}
+              fnc={(e) => titleHandler(e)}
               name="Titulo"
             />
           </div>
           <div className="addMovieForm__formBody__form__sinopsis">
             <TextInputGroup
+              value={sinopsis}
               required={true}
-              fnc={(e) => handleInput(e, "sinopsis")}
+              fnc={(e) => sinopsisHandler(e)}
               name="Sinopse"
             />
           </div>
           <div className="addMovieForm__formBody__form__gender">
             <TextInputGroup
+              value={gender}
               required={true}
-              fnc={(e) => handleInput(e, "gender")}
+              fnc={(e) => genderHandler(e)}
               name="Genero"
             />
           </div>
           <div className="addMovieForm__formBody__form__launch">
             <TextInputGroup
+              value={launchDate}
               required={true}
-              fnc={(e) => handleInput(e, "launchDate")}
+              fnc={(e) => launchDateHandler(e)}
               name="Ano de lançamento"
             />
           </div>
           <div className="addMovieForm__formBody__form__language">
             <TextInputGroup
+              value={language}
               required={true}
-              fnc={(e) => handleInput(e, "language")}
+              fnc={(e) => languageHandler(e)}
               name="Idioma"
             />
             <TextInputGroup
-              fnc={(e) => handleInput(e, "director")}
+              value={director}
+              fnc={(e) => directorHandler(e)}
               name="Diretor"
             />
           </div>
           <div className="addMovieForm__formBody__form__imdb">
             <TextInputGroup
-              fnc={(e) => handleInput(e, "imdb")}
+              value={imdb}
+              fnc={(e) => imdbHandler(e,)}
               name="IMDB Link"
             />
           </div>
           <div className="addMovieForm__formBody__form__score">
             <TextInputGroup
-              fnc={(e) => handleInput(e, "score")}
+              value={score}
+              fnc={(e) => scoreHandler(e)}
               name="Avaliação"
             />
           </div>
@@ -114,16 +145,18 @@ export default function AddMovieForm({ show, close }) {
             </h2>
             <RadioInputGroup
               required={true}
+              defaultChecked={subtitle === true}
               inputName="subtitle"
               name="Sim"
               value={true}
-              fnc={(value) => handleInput(value, "subtitle")}
+              fnc={(value) => subtitleHandler(value)}
             />
             <RadioInputGroup
+            defaultChecked={subtitle === false}
               inputName="subtitle"
               name="Não"
               value={false}
-              fnc={(value) => handleInput(value, "subtitle")}
+              fnc={(value) => subtitleHandler(value)}
             />
           </div>
           <button className="addMovieForm__formBody__form-button" type="submit">
