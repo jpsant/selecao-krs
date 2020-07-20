@@ -14,15 +14,15 @@
     },
     {
       "id": 7,
-      "title": "sete pecados capitais",
-      "sinopsis": "anime japonês",
+      "title": "sete pecados capitais 2",
+      "sinopsis": "anime japonês 2",
       "gender": "anime",
       "launchDate": "2014",
       "language": "Japonês",
       "director": "Toey animation",
       "imdb": "https://www.imdb.com/title/tt3909224/",
       "score": "8/10",
-      "subtitle": true
+      "subtitle": false
     },
     {
       "id": 10,
