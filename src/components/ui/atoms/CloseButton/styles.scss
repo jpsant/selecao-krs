@@ -1,3 +1,5 @@
+@import '../../../../mixins/mixins.scss';
+
 .closeButton {
   background-color: #9F9F9F;
   position: absolute;
@@ -10,6 +12,12 @@
   top: 10px;
   right: 10px;
   border: none;
+  cursor: pointer;
+
+  @include respond-to(mobile-medium) {
+    top: 0;
+    right: 0;
+  }
 }
 
 .closeButton:focus {

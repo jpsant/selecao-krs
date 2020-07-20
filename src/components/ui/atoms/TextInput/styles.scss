@@ -1,3 +1,5 @@
+@import '../../../../mixins/mixins.scss';
+
 .textInput {
   width: 260px;
   height: 30px;
@@ -6,6 +8,10 @@
   border-radius: 5px;
   border: none;
   border: 2px solid #fff;
+
+  @include respond-to(mobile-medium) {
+    width: 210px !important;
+  }
 }
 
 .textInput:focus {
