@@ -89,12 +89,10 @@ export default function AddMovieForm({ show, close }) {
             <TextInputGroup
               required={true}
               fnc={(e) => handleInput(e, "language")}
-              width="120px"
               name="Idioma"
             />
             <TextInputGroup
               fnc={(e) => handleInput(e, "director")}
-              width="120px"
               name="Diretor"
             />
           </div>
