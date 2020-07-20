@@ -7,5 +7,5 @@
   background-color: black;
   opacity: .7;
   z-index: 99;
-  transition: all 0.3s;
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 }

@@ -8,4 +8,10 @@
   background: #1E6262;
   border-radius: 5px;
   cursor: pointer;
+  filter: brightness(85%);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.deleteButton:hover {
+  filter: brightness(100%);
 }
