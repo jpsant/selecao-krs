@@ -91,7 +91,9 @@ export default function CardsContainer() {
       <div className="cardsContainer">
         <div className="cardsContainer__input">
           <h1>Lista de filmes</h1>
-          <AddButton fnc={addModalHandler} />
+          <div className="cardsContainer__input__button">
+            <AddButton fnc={addModalHandler} />
+          </div>
         </div>
         <div className="cardsContainer__cards">
           {movieList.map((movie) => (

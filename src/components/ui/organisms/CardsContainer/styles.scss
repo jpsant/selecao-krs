@@ -1,10 +1,11 @@
-@import '../../../../mixins/mixins.scss';
+@import "../../../../mixins/mixins.scss";
 
 .cardsContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 0 16px;
+  background-color: #f3f3f3;
 
   &__input {
     display: flex;
@@ -13,7 +14,11 @@
     justify-content: center;
     margin-top: 94px;
     margin-bottom: 38px;
-  
+    background-color: white;
+    padding: 8px;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+
     h1 {
       font-weight: bold;
       font-size: 20px;
@@ -21,11 +26,20 @@
       margin-right: 133px;
 
       @include respond-to(mobile-medium) {
-        margin-right: 95px;
+        margin-right: 80px;
       }
 
       @include respond-to(medium) {
         font-size: 45px;
+        padding: 0 32px;
+        margin-right: 103px;
+      }
+    }
+
+    &__button {
+
+      @include respond-to(medium) {
+        margin-right: 32px;
       }
     }
   }
