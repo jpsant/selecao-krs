@@ -90,7 +90,7 @@ export default function CardsContainer() {
       />
       <div className="cardsContainer">
         <div className="cardsContainer__input">
-          <h1>Lista de filmes</h1>
+          <h1>Adicionar Filmes</h1>
           <div className="cardsContainer__input__button">
             <AddButton fnc={addModalHandler} />
           </div>
