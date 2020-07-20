@@ -25,18 +25,6 @@
       "subtitle": true
     },
     {
-      "id": 8,
-      "title": "John wick 3",
-      "sinopsis": "assassino aposentado em busca de vingança 3",
-      "gender": "ação",
-      "launchDate": "2016",
-      "language": "inglês",
-      "director": "Chad Stahelski",
-      "imdb": "https://www.imdb.com/title/tt2911666/",
-      "score": "9/10",
-      "subtitle": true
-    },
-    {
       "id": 10,
       "title": "John wick 1",
       "sinopsis": "assassino aposentado em busca de vingança 1",
@@ -59,6 +47,18 @@
       "imdb": "https://www.imdb.com/title/tt2911666/",
       "score": "9/10",
       "subtitle": true
+    },
+    {
+      "title": "john wick 4",
+      "sinopsis": "assassino aposentado em busca de vingança 4",
+      "gender": "ação",
+      "launchDate": "2019",
+      "language": "ingles",
+      "director": "rebert tichter",
+      "imdb": "",
+      "score": "",
+      "subtitle": true,
+      "id": 4
     }
   ]
 }
