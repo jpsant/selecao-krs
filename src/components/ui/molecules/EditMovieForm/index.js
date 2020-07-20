@@ -10,7 +10,6 @@ import RadioInputGroup from "../../molecules/RadioInputGroup";
 export default function EditMovieForm({ show, close, item }) {
   useEffect(() => {
     movieHandler(item);
-    titleHandler(item.title);
   }, [item]);
 
   const movieList = useSelector((state) => state.movieList);
@@ -144,6 +143,7 @@ export default function EditMovieForm({ show, close, item }) {
               É legendado? <span>*</span>
             </h2>
             <RadioInputGroup
+              defaultChecked={subtitle === true}
               required={true}
               inputName="subtitle"
               name="Sim"
@@ -151,6 +151,7 @@ export default function EditMovieForm({ show, close, item }) {
               fnc={(value) => subtitleHandler(value)}
             />
             <RadioInputGroup
+              defaultChecked={subtitle === false}
               inputName="subtitle"
               name="Não"
               value={false}

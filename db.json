@@ -25,18 +25,6 @@
       "subtitle": false
     },
     {
-      "id": 10,
-      "title": "John wick 1",
-      "sinopsis": "assassino aposentado em busca de vingança 1",
-      "gender": "ação",
-      "launchDate": "2014",
-      "language": "inglês",
-      "director": "Chad Stahelski",
-      "imdb": "https://www.imdb.com/title/tt2911666/",
-      "score": "9/10",
-      "subtitle": true
-    },
-    {
       "id": 11,
       "title": "John wick 2",
       "sinopsis": "assassino aposentado em busca de vingança 2",
@@ -49,7 +37,8 @@
       "subtitle": true
     },
     {
-      "title": "john wick 4",
+      "id": 4,
+      "title": "john wick 5",
       "sinopsis": "assassino aposentado em busca de vingança 4",
       "gender": "ação",
       "launchDate": "2019",
@@ -57,8 +46,7 @@
       "director": "rebert tichter",
       "imdb": "",
       "score": "",
-      "subtitle": true,
-      "id": 4
+      "subtitle": true
     }
   ]
 }
